@@ -4,7 +4,7 @@
 
 { # this ensures the entire script is downloaded #
 
-dot_latest_version="v0.1.1"
+dot_latest_version="v0.1.2"
 
 dot_temp_dir="$(mktemp -d /tmp/XXXXX)"
 
