@@ -40,7 +40,7 @@ copy_files() {
     targetFile="$dest/.$(printf "%s" "$file" | sed "s/.*\/\(.*\)/\1/g")"
 
     if command cp -rfp $sourceFile $targetFile 2>/dev/null; then
-      echo "     $file -> $targetFile\n"
+      echo "     $file -> $targetFile"
     else
       echo >&2 "     Failed to copy '$file'!"
     fi

@@ -5,13 +5,13 @@
 > "Automation is not about being lazy, its about being productive" - [_Forgotten source_]
 
 ## Setup
-### `macOS`
+### macOS
   ```sh
-  bash -c "$(curl -LsS https://raw.githubusercontent.com/r0mflip/_dotfiles/v0.1.1/install.sh | bash)"
+  curl -o- https://raw.githubusercontent.com/r0mflip/_dotfiles/v0.1.3/install.sh | bash
   ```
-### `Ubuntu`
+### Ubuntu
   ```sh
-  bash -c "$(wget -qO - https://raw.githubusercontent.com/r0mflip/_dotfiles/v0.1.1/install.sh | bash)"
+  wget -qO- https://raw.githubusercontent.com/r0mflip/_dotfiles/v0.1.3/install.sh | bash
   ```
 
 ## Colors
