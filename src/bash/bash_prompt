@@ -105,10 +105,8 @@ set_prompts() {
   # | PS1 - Default interactive prompt                               |
   # ------------------------------------------------------------------
 
-  PS1="\[\033]0;\W\007\]"    # Terminal title (set to the
-                         # current working directory)
-
-  PS1+="$reset\n"        # New line
+  PS1="\[\033]0;\W\007\]"    # set terminal title to the pwd
+  PS1+="$reset"          # New line
   PS1+="$red\u"          # Username
   PS1+="$red@"
   PS1+="$red\h"          # Host
@@ -143,12 +141,8 @@ set_prompts() {
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-main() {
-  enable_color_support
-  set_prompts
-}
-
-main
+enable_color_support
+set_prompts
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -156,4 +150,3 @@ main
 
 unset -f enable_color_support
 unset -f set_prompts
-unset -f main

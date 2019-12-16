@@ -7,12 +7,20 @@
 mkd() {
   if [ -n "$*" ]; then
     mkdir -p "$@"
-    #      └─ make parent directories if needed
 
     cd "$1"
-    # change into the first directory
 
     return $?
-    # return the exit status of cd, mkdir is always 0
+  fi
+}
+
+# Quickly change to Windows profile
+win() {
+  local p
+  p="/mnt/c/Users/$(whoami)"
+
+
+  if [ -d "$p" ]; then
+    cd "$p"
   fi
 }

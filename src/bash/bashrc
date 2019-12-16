@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# don't change anything if already set
+[ -n "$PS1" ] \
+  || . ~/.bash_profile

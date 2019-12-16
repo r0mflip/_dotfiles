@@ -7,9 +7,6 @@
   branches = branch -a
   remotes = remote -v
 
-  # checkout is too long to type and often results in a typo
-  co = checkout
-
   # Amend the currently staged files to the latest commit
   amend = commit --amend --reuse-message=HEAD
 
