@@ -4,9 +4,9 @@
 
 { # this ensures the entire script is downloaded #
 
-dot_latest_version="v0.1.0"
+dot_latest_version="v0.1.1"
 
-dot_temp_dir="$(mktemp /tmp/XXXXX)"
+dot_temp_dir="$(mktemp -d /tmp/XXXXX)"
 
 # source url
 dot_source="https://github.com/r0mflip/_dotfiles.git"
