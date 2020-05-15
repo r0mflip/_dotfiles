@@ -11,8 +11,7 @@ main() {
   current_dir="$(pwd)"
 
   find \
-    "$current_dir/install.sh" \
-    "$current_dir/src/setup.sh" \
+    "$current_dir/setup.sh" \
     "$current_dir/src/bash" \
     "$current_dir/test" \
     -type f \

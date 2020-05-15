@@ -1,26 +1,7 @@
 #!/usr/bin/env bash
 
 # utilities
-be_sudo() {
-
-  sudo -v &> "/dev/null"
-
-  # Update existing `sudo` time stamp
-  # until this script has finished.
-  #
-  # https://gist.github.com/cowboy/3118588
-
-  while true; do
-    sudo -n true
-    sleep 60
-    kill -0 "$$" || exit
-  done &> "/dev/null" &
-
-}
-
-
 get_os() {
-
   local os=""
   local kernelName=""
 
@@ -36,35 +17,35 @@ get_os() {
   fi
 
   printf "%s" "$os"
-
 }
 
 
 # run installer for the specific OS
 main() {
-
   local OS
   OS="$(get_os)"
 
-  local_src_dir="$PWD"
-  src_dir="${1:-$local_src_dir}/src"
+  src_dir="$(cd "$(dirname "$0")" >/dev/null 2>&1; pwd -P)/src"
+  dst_dir="${1:-$HOME}"
 
   if [ ! -d "$src_dir/$OS" ]; then
     echo >&2 "=> Installer not found for '$OS'"
     exit 2
   fi
 
+  echo ""
+  echo "=> Set destination to '$dst_dir'"
   echo "=> Running installer for '$OS'"
+  echo ""
 
-  "$src_dir/$OS/main.sh"
+  "$src_dir/$OS/main.sh" "$src_dir" "$dst_dir"
 
-  echo
+  echo ""
   echo "=> Close and reopen your terminal allowing"
   echo "=> the changes to take effect"
-  echo
+  echo ""
 
   return
-
 }
 
 main "$@"

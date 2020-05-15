@@ -38,6 +38,13 @@ prompt_git() {
   [ "$(git rev-parse --is-inside-git-dir)" == "true" ] \
     && return
 
+  # Get the short symbolic ref.
+  # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+  # Otherwise, just give up.
+  branchName="$(printf "%s" "$(git rev-parse --abbrev-ref HEAD 2> '/dev/null' \
+    || git rev-parse --short HEAD 2> '/dev/null' \
+    || printf "(unknown)")" | tr -d "\n")"
+
   # Check for uncommitted changes in the index.
   if ! git diff --quiet --ignore-submodules --cached; then
     tmp="$tmp+";
@@ -58,15 +65,15 @@ prompt_git() {
     tmp="$tmp$";
   fi
 
+  if [ ! "$branchName" == "(unknown)" ]; then
+    # Check for outstanding commits
+    if [ -n "$(git log --quiet --oneline origin/master..HEAD 2>/dev/null)" ]; then
+      tmp="$tmp^";
+    fi
+  fi
+
   [ -n "$tmp" ] \
     && tmp=" [$tmp]"
-
-  # Get the short symbolic ref.
-  # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
-  # Otherwise, just give up.
-  branchName="$( printf "%s" "$( git rev-parse --abbrev-ref HEAD 2> '/dev/null' \
-    || git rev-parse --short HEAD 2> '/dev/null' \
-    || printf "(unknown)" )" | tr -d "\n" )"
 
   printf "%s" "$1$branchName$2$tmp"
 

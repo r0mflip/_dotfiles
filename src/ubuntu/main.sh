@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 
 copy_files() {
-  local dest
-  dest="$HOME"
-
-  local local_src_dir
-  local_src_dir="$PWD"
-
-  local src_dir
-  src_dir="${1:-$local_src_dir}/src"
+  src_dir="$1"
+  dest="$2"
 
   echo "=> Copying files"
 
@@ -42,7 +36,7 @@ copy_files() {
     if command cp -rfp $sourceFile $targetFile 2>/dev/null; then
       echo "     $file -> $targetFile"
     else
-      echo >&2 "     Failed to copy '$file'!"
+      echo >&2 "     Failed to copy '$file'"
     fi
   done
 

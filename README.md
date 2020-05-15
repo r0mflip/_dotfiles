@@ -5,14 +5,9 @@
 > "Automation is not about being lazy, its about being productive" - [_Forgotten source_]
 
 ## Setup
-### macOS
-  ```sh
-  curl -o- https://raw.githubusercontent.com/r0mflip/_dotfiles/v0.1.3/install.sh | bash
-  ```
-### Ubuntu
-  ```sh
-  wget -qO- https://raw.githubusercontent.com/r0mflip/_dotfiles/v0.1.3/install.sh | bash
-  ```
+```bash
+$ git clone https://git.io/JfRCm && bash _dotfiles/setup.sh
+```
 
 ## Colors
 - Vim uses [one-dark](https://github.com/AlexMax/.vim/blob/master/colors/one.vim) theme by AlexMax
